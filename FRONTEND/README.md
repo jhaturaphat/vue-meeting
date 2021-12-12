@@ -18,4 +18,7 @@ npm run build
 ### Run your unit tests
 ```
 npm run test:unit
+
 ```
+frontend install 
+npm install jquery bootstrap@4 popper.js --save

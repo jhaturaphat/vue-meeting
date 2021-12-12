@@ -3,8 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session')
 
+const mysql = require('./configs/databases');
+mysql.query('show tables',(err, result) => {
+  console.log(result);
+})
+
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'keyboard secret key',
     resave: false,
     saveUninitialized: true,
     cookie: { /*secure: true*/ }
