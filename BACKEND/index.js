@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const session = require('express-session')
+const session = require('express-session');
+const routes = require('./routes')
 
 const mysql = require('./configs/databases');
 mysql.query('show tables',(err, result) => {
@@ -17,6 +18,9 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
+
+// เรียกใช้งาน Routes
+app.use('/api', routes);
 
 app.get('*',(req, res) => {
     res.send('<h1>Server started</h1>')
