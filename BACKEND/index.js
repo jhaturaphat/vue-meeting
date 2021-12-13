@@ -2,12 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const routes = require('./routes')
-
-const mysql = require('./configs/databases');
-mysql.query('show tables',(err, result) => {
-  console.log(result);
-})
+const routes = require('./routes');
 
 app.use(session({
     secret: 'keyboard secret key',
