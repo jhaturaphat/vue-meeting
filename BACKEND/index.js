@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const routes = require('./routes');
 
 app.use(session({
     secret: 'keyboard secret key',
@@ -14,11 +13,15 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 
+// สร้าง Custom function
+
+app.use(require('./configs/middleware'));
+
 // เรียกใช้งาน Routes
-app.use('/api', routes);
+app.use('/api', require('./routes'));
 
 app.get('*',(req, res) => {
-    res.send('<h1>Server started</h1>')
+    res.send('<h1>Server is start On PORT 5000</h1>')
 })
 
 app.listen(5000, ()=>{console.log("Server is start On PORT 5000");})
