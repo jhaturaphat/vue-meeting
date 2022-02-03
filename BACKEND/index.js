@@ -21,7 +21,7 @@ app.use(require('./configs/middleware'));
 app.use('/api', require('./routes'));
 
 app.get('*',(req, res) => {
-    res.send('<h1>Server is start On PORT 5000</h1>')
+    res.send('<h1>Server is start Sucess</h1>')
 })
 
 app.listen(5000, ()=>{console.log("Server is start On PORT 5000");})
